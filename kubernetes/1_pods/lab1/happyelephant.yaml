@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: happyelephant
+  namespace: lab1
+  labels:
+    app: jenkins
+    segment: IT
+    company: mycompany
+spec:
+  containers:
+    - name: jenkins
+      image: jenkins:latest
+      ports:
+        - name: jenkinsport
+          containerPort: 8080
+          protocol: TCP

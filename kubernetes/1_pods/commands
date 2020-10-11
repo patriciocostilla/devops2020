@@ -1,0 +1,4 @@
+kubectl create namespace dev-service1
+kubectl apply -f 3_happypanda-update.yaml
+kubectl delete -f 3_happypanda-update.yaml
+kubectl delete namespace dev-service1

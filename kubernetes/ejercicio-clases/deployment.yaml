@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: web-deployment
+  name: web-deployment
+  namespace: web
+spec:
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: web-deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: web-deployment
+    spec:
+      containers:
+        - image: patriciocostilla/web:v2
+          imagePullPolicy: Always
+          name: web-deployment
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: FOO
+              valueFrom:
+                configMapKeyRef:
+                  name: web-config-map
+                  key: FOO
+            - name: BAR
+              valueFrom:
+                configMapKeyRef:
+                  name: web-config-map
+                  key: BAR
+            - name: SUPERSECRETPASS
+              valueFrom:
+                secretKeyRef:
+                  name: web-secret
+                  key: SUPERSECRETPASS
+            - name: SUPERSECRETUSER
+              valueFrom:
+                secretKeyRef:
+                  name: web-secret
+                  key: SUPERSECRETUSER
