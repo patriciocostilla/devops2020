@@ -1,5 +1,11 @@
 # Devops 2020
 
+Repositorio para desarrollo de las prácticas de DEVOPS.
+
+- Costilla, Juan Patricio
+- UTN FRRe
+- 2020
+
 ## Práctico de GIT
 
 1. Crearse una cuenta en github si es que aun no la tienen
