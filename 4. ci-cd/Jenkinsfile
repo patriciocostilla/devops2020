@@ -1,15 +1,20 @@
 pipeline {
-    agent { label 'docker'}
-    
+    agent any
 
     stages {
         stage('Build') {
             steps {
-                container('docker') {
-                    script {
-                        sh 'docker ps'
-                    }
-                }
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
